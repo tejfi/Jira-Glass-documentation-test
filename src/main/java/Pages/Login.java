@@ -10,7 +10,7 @@ public class Login extends BasePage {
     WebElement usernameField;
     @FindBy(id = "login-form-password")
     WebElement passwordField;
-    @FindBy(id = "login-form-submit")
+    @FindBy(id = "login")
     WebElement btnSubmit;
     @FindBy(xpath = "//a[@id='header-details-user-fullname']/span/span/img")
     WebElement userProfile;
