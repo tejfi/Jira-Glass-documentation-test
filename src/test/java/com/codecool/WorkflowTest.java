@@ -13,6 +13,7 @@ public class WorkflowTest {
     @Test
     public void doLogin() {
         Login login = new Login(DriverSetup.getWebDriver());
+        login.goToPage();
         Map<String, String> dotEnv = DotEnv.load();
         login.login(dotEnv.get("JIRA_USERNAME"), dotEnv.get("JIRA_PASSWORD"));
         System.out.println("0");
