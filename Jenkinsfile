@@ -1,5 +1,4 @@
 node{
-  def env = System.getenv()
   environment {
         SEHUB_USERNAME = credentials('SEHUB_USERNAME')
         SEHUB_PW = credentials('SEHUB_PW')
