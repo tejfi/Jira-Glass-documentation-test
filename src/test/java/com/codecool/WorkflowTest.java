@@ -23,7 +23,7 @@ public class WorkflowTest {
     }
 
     @Test
-    public void faszomat(){
+    public void test1(){
 
     }
 
