@@ -1,5 +1,5 @@
 node{
-  env.JAVA_HOME = credentials('JAVA_HOME')
+  env.JAVA_HOME = /usr/bin/java
   environment {
         SEHUB_USERNAME = credentials('SEHUB_USERNAME')
         SEHUB_PW = credentials('SEHUB_PW')
