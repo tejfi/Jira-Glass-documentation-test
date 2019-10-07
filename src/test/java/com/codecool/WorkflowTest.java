@@ -19,7 +19,7 @@ public class WorkflowTest {
         dotEnv = WebdriverSingleton.dotEnvLoader();
         Login login = new Login(WebdriverSingleton.getDriver());
         login.goToPage();
-        login.doLogin(dotEnv.get("JIRA_USERNAME"), dotEnv.get("JIRA_PASSWORD"));
+        login.doLogin(System.getenv("JIRA_USERNAME"), System.getenv("JIRA_PASSWORD"));
     }
 
     @Test
