@@ -1,10 +1,10 @@
 node{
    environment {
-     SEHUB_USERNAME = credentials('SEHUB_USERNAME')
-     SEHUB_PW = credentials('SEHUB_PW')
-     JIRA_USERNAME = credentials('JIRA_USERNAME')
-     JIRA_PASSWORD = credentials('JIRA_PASSWORD')
-     SEHUB_URL = credentials('SEHUB_URL')
+     SEHUB_USERNAME="selenium"
+     SEHUB_PW="CoolCanvas19."
+     SEHUB_URL="seleniumhub.codecool.codecanvas.hu/wd/hub"
+     JIRA_USERNAME="user17"
+     JIRA_PASSWORD="CoolCanvas19."
      JAVA_HOME = /usr/bin/java
    }
   stage('SCM checkout'){
