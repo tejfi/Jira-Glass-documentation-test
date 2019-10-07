@@ -3,6 +3,6 @@ node{
     git 'https://github.com/tejfi/Jira-Glass-documentation-test.git'
   }
   stage('compile-package){
-  sh 'mvn package'
+    sh 'mvn package'
   }
 }
