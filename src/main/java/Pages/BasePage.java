@@ -9,7 +9,6 @@ public abstract class BasePage {
     protected WebDriver driver;
     protected String route;
     protected static final String BASE_URL = "https://jira.codecool.codecanvas.hu";
-    protected WebdriverSingleton driverSetup;
 
     BasePage(String route, WebDriver driver) {
         this.route = BASE_URL + route;

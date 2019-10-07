@@ -16,14 +16,16 @@ public class WorkflowTest {
 
     @BeforeEach
     public void setUp() throws MalformedURLException {
-        Login login = new Login(driver);
+        dotEnv = WebdriverSingleton.dotEnvLoader();
+        Login login = new Login(WebdriverSingleton.getDriver());
         login.goToPage();
         login.doLogin(dotEnv.get("JIRA_USERNAME"), dotEnv.get("JIRA_PASSWORD"));
-        dotEnv = DotEnv.load();
-        driver = WebdriverSingleton.getDriver();
     }
 
+    @Test
+    public void faszomat(){
 
+    }
 
 
 
