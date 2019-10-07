@@ -1,4 +1,5 @@
 node{
+  tool 'JDK-1.8'
   environment {
         SEHUB_USERNAME = credentials('SEHUB_USERNAME')
         SEHUB_PW = credentials('SEHUB_PW')
