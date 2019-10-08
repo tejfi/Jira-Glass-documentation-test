@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class Workflow extends BasePage {
     public Workflow(String route, WebDriver driver) {
         super(route, driver);
@@ -36,10 +38,16 @@ public class Workflow extends BasePage {
     WebElement loginFormSubmit;
     @FindBy(xpath = "/section[@id='content']//section[@class='aui-page-panel-content']//strong[.='Workflow has been successfully imported']")
     WebElement succesFullMessage;
-    @FindBy(id="finishButton")
+    @FindBy(id = "finishButton")
     WebElement finishButton;
     @FindBy(xpath = "//div[@class='jira-dialog-heading']//h2")
     WebElement dialogHeading;
+    @FindBy(xpath = "//div[@id='assign-issue-types-dialog']//form[@class='aui']//table//span[@title='Task - A task that needs to be done.']")
+    WebElement task;
+    @FindBy(id = "assign-issue-types-submit")
+    WebElement submitButton;
+    @FindBy(xpath = "//div[@class='project-config-workflow-name']//a")
+    List<WebElement> workflows;
 
     public boolean checkUserOnTheWorkFlowConfigPage() {
         String actualheadingText = projectConfigHeading.getText();
@@ -105,11 +113,36 @@ public class Workflow extends BasePage {
         return succesFullMessage.isDisplayed();
     }
 
-    public void  clickFinishButton(){
+    public boolean administratorAccesHeading() {
+
+        return administratorAccesHeading.isDisplayed();
+    }
+
+    public void clickFinishButton() {
         finishButton.click();
     }
 
-    public  void dialogHeadingcheck(String name){
+    public void dialogHeadingcheck(String name) {
         dialogHeading.getText().contains(name);
+    }
+
+    public void selectTask() {
+        task.click();
+    }
+
+    public void finishAssign() {
+        submitButton.click();
+    }
+
+    public boolean checkWorkflowisCreated(String workflowName) {
+        for (WebElement workflow : workflows) {
+            if (workflow.getText().equals(workflowName)) {
+                return true;
+            }
+
+
+        }
+
+        return false;
     }
 }
