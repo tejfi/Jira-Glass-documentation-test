@@ -1,4 +1,4 @@
-package com.codecool;
+package com.codecool.regular;
 
 import Pages.Login;
 import Util.WebdriverSingleton;

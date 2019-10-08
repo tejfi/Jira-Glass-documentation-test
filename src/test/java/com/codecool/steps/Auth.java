@@ -32,4 +32,10 @@ public class Auth {
     public void iCloseBrowser() {
         WebdriverSingleton.closeWebBrowser();
     }
+
+
+    @Then("I log out")
+    public void iLogOut() {
+        login.logOut();
+    }
 }

@@ -12,7 +12,7 @@ public class Login extends BasePage {
     WebElement passwordField;
     @FindBy(id = "login")
     WebElement btnSubmit;
-    @FindBy(xpath = "//a[@id='header-details-user-fullname']/span/span/img")
+    @FindBy(xpath = "//a[@id='header-details-user-fullname']")
     WebElement userProfile;
     @FindBy(id = "log_out")
     WebElement logoutBtn;
@@ -35,5 +35,11 @@ public class Login extends BasePage {
     public boolean validateProfileImgIsPresent(String logout) {
         return logoutBtn.getText().equals(logout);
     }
+
+    public void logOut(){
+        userProfile.click();
+        logoutBtn.click();
+    }
+
 }
 

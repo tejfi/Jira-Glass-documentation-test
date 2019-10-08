@@ -8,10 +8,10 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 public abstract class BasePage {
     protected WebDriver driver;
     protected String route;
-    protected static final String BASE_URL = "https://jira.codecool.codecanvas.hu";
+    protected static final String BASE_URL = "https://jira2.codecool.codecanvas.hu";
 
     BasePage(String route, WebDriver driver) {
-        this.route = BASE_URL + route;
+        this.route = WebdriverSingleton.dotEnvLoader().get("BASE_URL") + route;
         this.driver = driver;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
