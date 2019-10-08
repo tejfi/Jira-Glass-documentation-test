@@ -21,7 +21,7 @@ public class WebdriverSingleton {
     public static WebDriver getDriver() throws MalformedURLException {
         if (driver == null) {
             dotEnvLoader();
-            hubUrl = "https://selenium:CoolCanvas19.@seleniumhub.codecool.codecanvas.hu/wd/hub";
+            hubUrl = "http://localhost:2323/wd/hub";
             DesiredCapabilities capability = DesiredCapabilities.chrome();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
