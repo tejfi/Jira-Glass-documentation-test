@@ -41,10 +41,12 @@ public class Counter {
 
     @When("Select GLASS DUCOMENTATION on the left  side bar")
     public void selectGLASSDUCOMENTATIONOnTheLeftSideBar() {
+        project.getGlassDucoments();
     }
 
     @Then("glass-navigation bar will shown")
     public void glassNavigationBarWillShown() {
+        Assert.assertNotNull(project.checkGlassNavigationbar());
     }
 
     @When("Click on PROJECTS from the menu bar")

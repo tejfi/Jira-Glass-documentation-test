@@ -11,6 +11,6 @@ Feature: Counter
     When Select GLASS DUCOMENTATION on the left  side bar
     Then glass-navigation bar will shown
 
-      Scenario: Logout
-          Then I log out
-          Then I close browser
+  Scenario: Logout
+    Then I log out
+    Then I close browser

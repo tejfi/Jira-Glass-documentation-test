@@ -7,11 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Project extends BasePage {
+
     public Project(String route, WebDriver driver) {
         super(route, driver);
     }
 
-
+    @FindBy(xpath = "//ul[@id='header-nav']")
+    WebElement glassNavBar;
     @FindBy(linkText = "weLoveJira (WEL)")
     WebElement desiredProject;
     @FindBy(xpath = "section[@id='content']//h1[.='Browse projects']")
@@ -20,6 +22,14 @@ public class Project extends BasePage {
     WebElement browseLink;
     @FindBy(xpath = "//div[@class='aui-item project-title']/a[@title]")
     WebElement projectTitle;
+    @FindBy(xpath = "//span[@title='Glass Documentation']")
+    WebElement  glassDucomentation;
+    @FindBy(xpath ="//a[@data-tooltip='Project settings']" )
+    WebElement  projectSettings;
+    @FindBy(xpath = "//div[@class='aui-page-header-main']//h1[@id='project-config-header-name']")
+    WebElement projectSettingsTitle;
+    @FindBy(xpath = "//a[@id='view_project_workflows']")
+        WebElement workFlowLink;
 
     public void getJiraProjectPage() {
         desiredProject.click();
@@ -40,5 +50,26 @@ public class Project extends BasePage {
 
     }
 
+    public void getGlassDucoments(){
+        glassDucomentation.click();
+    }
 
+
+    public Object checkGlassNavigationbar() {
+        return glassNavBar.isDisplayed();
+
+    }
+
+    public void goToProjectSettings(){
+        projectSettings.click();
+    }
+
+    public boolean validUserOnTheProjectSettingsPage(){
+
+        return projectSettingsTitle.isDisplayed();
+    }
+
+    public void goToWorkFlow(){
+        workFlowLink.click();
+    }
 }
