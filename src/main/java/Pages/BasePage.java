@@ -1,9 +1,16 @@
 package Pages;
 
 import Util.WebdriverSingleton;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 public abstract class BasePage {
     protected WebDriver driver;
@@ -19,6 +26,22 @@ public abstract class BasePage {
 
     public void goToPage() {
         driver.get(this.route);
+    }
+
+
+    public static WebElement findElement(final WebDriver driver, final By locator,
+
+                                          final int timeoutSeconds) {
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(timeoutSeconds, TimeUnit.SECONDS)
+                .pollingEvery(1000, TimeUnit.MILLISECONDS)
+                .ignoring(NoSuchElementException.class);
+        return wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver webDriver) {
+                return driver.findElement(locator);
+            }
+        });
+
     }
 }
 

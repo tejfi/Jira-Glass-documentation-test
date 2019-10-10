@@ -30,22 +30,15 @@ Feature: Workflow
     When click the Associate button
     Then Workflow has been successfully imported message will shown
     Then check Worflow is avaiable "<WorkflowName>"
-    Then DIALOG MESSAGE shown contains "<WorkflowName>"
-    And ensure user entered valid password
-    And click the FINISH button
-    Then check Worflow is avaiable "<WorkflowName>"
-    When click the Associate button
-    Then Your workflows have been published message shown.
-    When click remove <"WorkflowName">  under the actions
+    When click remove "<WorkflowName>" under the actions
     And click the PUBLISH button
-    Then <"Publish Workflows">shown will shwon on the left side
     And click the Associate button
     Then Your workflows have been published message shown.
 
 
     Examples:
-      | WorkflowName  | "Publish Workflows" |
-      | kkao   | Publish Workflows   |
+      | WorkflowName  |
+      | java   |
 
 
   Scenario: Logout

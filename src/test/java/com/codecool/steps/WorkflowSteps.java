@@ -167,20 +167,11 @@ public class WorkflowSteps {
         Assert.assertTrue(workflow.auiMEssageIsshown());
     }
 
-    @When("click remove <{string}>  under the actions")
-    public void clickRemoveUnderTheActions(String workflowName) {
-        if (administratorACCESWillShown()) {
-            ensureUserEnteredValidPassword();
-            clickedTheSubmitButton();
-        }
-        workflow.removeWorkflow(workflowName);
-    }
 
 
-    @Then("<{string}>shown will shwon on the left side")
-    public void shownWillShwonOnTheLeftSide(String name) {
-        String actual = workflow.getPublishWorkflowText();
-        Assert.assertEquals(name, actual);
+    @When("click remove {string} under the actions")
+    public void clickRemoveUnderTheActions(String arg0) {
+        workflow.removeWorkflow(arg0);
 
     }
 }

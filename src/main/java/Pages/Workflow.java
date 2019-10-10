@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -60,7 +62,7 @@ public class Workflow extends BasePage {
     WebElement publishH2Tag;
     @FindBy(id = "workflow-mapping-submit")
     WebElement associateButton;
-    @FindBy(className = "aui-message aui-message-success success closeable shadowed aui-will-close")
+    @FindBy(className = "aui-message")
     WebElement auiMessage;
 
 
@@ -167,7 +169,11 @@ public class Workflow extends BasePage {
     }
 
     public void clickPublishButton() {
-        publishButton.click();
+        /*findElement(driver, By.id("publish-draft"), 10)
+                .click();*/
+        WebDriverWait webDriverwait = new WebDriverWait(driver, 10);
+        WebElement bttn = webDriverwait.until(ExpectedConditions.elementToBeClickable(By.id("publish-draft")));
+        bttn.click();
     }
 
     public String getPublishWorkflowText() {
@@ -186,7 +192,9 @@ public class Workflow extends BasePage {
     }
 
     public void removeWorkflow(String workflowName) {
-        driver.findElement(By.xpath("//a[@title='Remove" + workflowName + "']"));
+        findElement(driver, By.xpath("//div[@id='project-config-panel-workflows']/table//a[@title='Remove " + workflowName + "']/span[@class='aui-icon aui-icon-small aui-iconfont-remove']"), 10)
+                .click();
+
     }
 
 }
