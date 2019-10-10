@@ -10,9 +10,12 @@ import org.junit.Assert;
 
 import java.net.MalformedURLException;
 
+import static com.codecool.util.RandomString.generateRandomString;
+
 public class WorkflowSteps {
     private Workflow workflow = new Workflow("plugins/servlet/project-config/WEL/workflows", WebdriverSingleton.getDriver());
     private Project project = new Project("plugins/servlet/project-config/WEL/summary", WebdriverSingleton.getDriver());
+    private String workflowName=generateRandomString();
 
     public WorkflowSteps() throws MalformedURLException {
     }
@@ -54,11 +57,6 @@ public class WorkflowSteps {
         workflow.workflowSelectHeading();
     }
 
-
-    @And("Add name to the Worfklow {string}")
-    public void addNameToTheWorfklow(String workflowName) {
-        workflow.addNameToTheNewWorkflow(workflowName);
-    }
 
     @When("click NEXT button")
     public void clickNEXTButton() {
@@ -114,10 +112,6 @@ public class WorkflowSteps {
         workflow.clickFinishButton();
     }
 
-    @Then("DIALOG MESSAGE shown contains {string}")
-    public void dialogMESSAGEShownContains(String workFlowName) {
-        workflow.dialogHeadingcheck(workFlowName);
-    }
 
     @And("select task")
     public void selectTask() {
@@ -129,10 +123,6 @@ public class WorkflowSteps {
         workflow.finishAssign();
     }
 
-    @And("check Worflow is avaiable")
-    public void checkWorflowIsAvaiable() {
-    }
-
 
     @When("Select PROJECT SETTINGS bottom of the left side")
     public void selectPROJECTSETTINGSBottomOfTheLeftSide() {
@@ -141,7 +131,6 @@ public class WorkflowSteps {
 
     @And("check Worflow is avaiable {string}")
     public void checkWorflowIsAvaiable(String WorkflowName) {
-        workflow.checkWorkflowisCreated(WorkflowName);
 
     }
 
@@ -168,10 +157,27 @@ public class WorkflowSteps {
     }
 
 
+    @And("Add name to the Worfklow $WorkflowName")
+    public void addNameToTheWorfklow$WorkflowName() {
+        workflow.addNameToTheNewWorkflow(workflowName);
 
-    @When("click remove {string} under the actions")
-    public void clickRemoveUnderTheActions(String arg0) {
-        workflow.removeWorkflow(arg0);
+    }
+
+    @Then("DIALOG MESSAGE shown contains $WorkflowName")
+    public void dialogMESSAGEShownContains$WorkflowName() {
+        workflow.dialogHeadingcheck(workflowName);
+
+    }
+
+    @Then("check Worflow is avaiable $WorkflowName")
+    public void checkWorflowIsAvaiable$WorkflowName() {
+        workflow.checkWorkflowisCreated(workflowName);
+
+    }
+
+    @When("click remove $WorkflowName under the actions")
+    public void clickRemove$WorkflowNameUnderTheActions() {
+        workflow.removeWorkflow(workflowName);
 
     }
 }

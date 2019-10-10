@@ -12,33 +12,29 @@ Feature: Workflow
     Then Validate user on the PROJECT SETTINGS page
     When Click on Workflows link on the left side bar
 
-  Scenario Outline: Create the Workflow
+  Scenario: Create the Workflow
     Then Workflow project config Header will shown
     When ADD WORKFLOW button is clicked
     Then import FROM BUNDLE option is shown
     When import FROM BUNDLE option is clicked
     Then SELECTION OF WORKFLOWS are shown
     When select Easy Agile Scrum Workflow for Jira bundle
-    And Add name to the Worfklow "<WorkflowName>"
+    And Add name to the Worfklow $WorkflowName
     When click NEXT button
     Then Map Workflow Statuses will be shown
     When click the FINISH button
-    Then DIALOG MESSAGE shown contains "<WorkflowName>"
+    Then DIALOG MESSAGE shown contains $WorkflowName
     And select task
     And Click submit button
     And click the PUBLISH button
     When click the Associate button
     Then Workflow has been successfully imported message will shown
-    Then check Worflow is avaiable "<WorkflowName>"
-    When click remove "<WorkflowName>" under the actions
+    Then check Worflow is avaiable $WorkflowName
+    When click remove $WorkflowName under the actions
     And click the PUBLISH button
     And click the Associate button
     Then Your workflows have been published message shown.
 
-
-    Examples:
-      | WorkflowName  |
-      | java   |
 
 
   Scenario: Logout
