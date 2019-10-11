@@ -3,6 +3,9 @@ pipeline{
     agent any
 
     stages {
+        stage('SCM checkout'){
+            git 'https://github.com/tejfi/jira-project.git'
+      }
 
         stage ('Compile Stage') {
 
@@ -15,7 +18,7 @@ pipeline{
 
             }
         }
-    stage ('Test Stage') {
+        stage ('Test Stage') {
 
             steps {
 
