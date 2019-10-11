@@ -21,7 +21,7 @@ public class WebdriverSingleton {
     public static WebDriver getDriver() throws MalformedURLException {
         if (driver == null) {
             dotEnvLoader();
-            hubUrl = "https://" + System.getProperty("SEHUB_USERNAME") + ":" + System.getProperty("SEHUB_PW") + "@" + System.getProperty("SEHUB_URL");
+            hubUrl = "https://" + System.getenv("SEHUB_USERNAME") + ":" + System.getenv("SEHUB_PW") + "@" + System.getenv("SEHUB_URL");
             DesiredCapabilities capability = DesiredCapabilities.chrome();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
