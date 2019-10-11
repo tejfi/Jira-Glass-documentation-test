@@ -29,6 +29,7 @@ public class WebdriverSingleton {
             capability.setBrowserName("chrome");
             capability.setPlatform(Platform.LINUX);
             capability.setCapability("browserstack.debug", "true");
+            System.out.println(hubUrl);
             driver = new RemoteWebDriver(new URL(hubUrl), capability);
         }
         return driver;
