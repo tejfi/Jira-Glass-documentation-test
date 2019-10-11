@@ -1,26 +1,23 @@
 pipeline{
-
+    env.JAVA_HOME = tool 'JDK-1.8'
+    bat "\"${mvnHome}\"\\bin\\mvn -B verify"
     agent any
 
     stages {
-
-      stage('SCM checkout'){
-
-        git 'https://github.com/tejfi/jira-project.git'
-      }
-
-        stage ('Compile Stage') {
-
-            steps {
-
-                withMaven(maven: 'maven_4_0_0') {
-                    sh 'mvn clean install'
-
-                }
+        stage('SCM checkout'){
+            steps{
+                git 'https://github.com/tejfi/jira-project.git'
+            }
+        }
+         stage('compile-package'){
+             steps{
+                 sh 'mvn package'
+             }
+         }
 
             }
         }
-    stage ('Test Stage') {
+        stage ('Test Stage') {
 
             steps {
 
@@ -33,9 +30,8 @@ pipeline{
         }
 
 
-        stage ('Cucumber Reports') {
-
-            steps {
+           stage ('Cucumber Reports') {
+               steps{
                 cucumber buildStatus: "UNSTABLE",
                     fileIncludePattern: "**/cucumber.json",
                     jsonReportDirectory: 'target'
@@ -45,5 +41,6 @@ pipeline{
         }
 
     }
+}
 
 }
