@@ -6,7 +6,7 @@ pipeline{
                 git 'https://github.com/tejfi/jira-project.git'
             }
         }
-        stage('compile-package){
+        stage('compile-package'){
             sh 'mvn package'
               }
 
