@@ -7,12 +7,13 @@ pipeline{
             }
         }
          stage('compile-package'){
-             steps {
+             steps{
                  sh 'mvn package'
              }
+         }
 
           stage ('Test Stage') {
-              steps {
+              steps{
                 withMaven(maven: 'maven_4_0__0') {
                     sh 'mvn test'
                 }
@@ -20,12 +21,11 @@ pipeline{
         }
 
            stage ('Cucumber Reports') {
-               steps {
+               steps{
                 cucumber buildStatus: "UNSTABLE",
                     fileIncludePattern: "**/cucumber.json",
                     jsonReportDirectory: 'target'
                }
            }
-         }
     }
 }
