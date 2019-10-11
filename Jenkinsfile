@@ -5,10 +5,14 @@ pipeline{
     stages {
       
         stage('SCM checkout'){
-      
-            git 'https://github.com/tejfi/jira-project.git'
+            
+            steps {
+                
+                git 'https://github.com/tejfi/jira-project.git'
             
                 }
+            
+            }
 
         stage ('Compile Stage') {
 
