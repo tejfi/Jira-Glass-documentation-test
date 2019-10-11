@@ -12,21 +12,19 @@ import java.util.Map;
 
 public class WorkflowTest {
     private WebDriver driver;
-    Map<String, String> dotEnv;
 
     @BeforeEach
     public void setUp() throws MalformedURLException {
-        dotEnv = WebdriverSingleton.dotEnvLoader();
+        WebdriverSingleton.dotEnvLoader();
         Login login = new Login(WebdriverSingleton.getDriver());
         login.goToPage();
-        login.doLogin("user17","CoolCanvas19" );
+        login.doLogin(WebdriverSingleton.dotEnvLoader().get("JIRA_USERNAME"), "JIRA_PASSWORD");
     }
 
     @Test
-    public void test1(){
+    public void test1() {
 
     }
-
 
 
     @AfterEach
