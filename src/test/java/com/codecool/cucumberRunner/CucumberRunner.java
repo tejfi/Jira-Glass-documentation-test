@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = ".//src/test/java/com/codecool/features",
         glue = {"com.codecool.steps"},
-        plugin = {"html:target/cucumber-html-report", "json:target/cucumber-json-report.json"})
+        plugin = {"html:target/cucumber-html-report", "json:target/cucumber-json-report.json"},
+        monochrome = true)
 public class CucumberRunner {
 }
