@@ -72,7 +72,8 @@ public class Workflow extends BasePage {
     }
 
     public boolean checkUserOnTheWorkFlowConfigPage() {
-        String actualheadingText = projectConfigHeading.getText();
+        String actualheadingText = findElement(driver,By.xpath("//div[@class='aui-page-header-main']/h2[@class='project-config-heading']"),10)
+                .getText();
         return actualheadingText.equals(WebdriverSingleton.dotEnvLoader().get("PROJECT_CONFIG_HEADING"));
     }
 

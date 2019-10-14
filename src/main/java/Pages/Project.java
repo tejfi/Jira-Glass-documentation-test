@@ -2,6 +2,7 @@ package Pages;
 
 import Util.WebdriverSingleton;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,13 +24,13 @@ public class Project extends BasePage {
     @FindBy(xpath = "//div[@class='aui-item project-title']/a[@title]")
     WebElement projectTitle;
     @FindBy(xpath = "//span[@title='Glass Documentation']")
-    WebElement  glassDucomentation;
-    @FindBy(xpath ="//a[@data-tooltip='Project settings']" )
-    WebElement  projectSettings;
+    WebElement glassDucomentation;
+    @FindBy(xpath = "//a[@data-tooltip='Project settings']")
+    WebElement projectSettings;
     @FindBy(xpath = "//div[@class='aui-page-header-main']//h1[@id='project-config-header-name']")
     WebElement projectSettingsTitle;
     @FindBy(xpath = "//a[@id='view_project_workflows']")
-        WebElement workFlowLink;
+    WebElement workFlowLink;
 
     public void getJiraProjectPage() {
         desiredProject.click();
@@ -39,18 +40,21 @@ public class Project extends BasePage {
         return headerSection.getText();
     }
 
-    public void getProjects(){
+    public void getProjects() {
         browseLink.click();
     }
 
     public boolean checkProjectIsShownOnTheLeftSide() {
-        String actualprojectTitle = projectTitle.getText();
+        String actualprojectTitle = findElement(driver, By.xpath("//div[@class='aui-item project-title']/a[@title]"), 10)
+                .getText();
 
-        return actualprojectTitle.equals(WebdriverSingleton.dotEnvLoader().get("PROJECT_TITLE"));
+
+        return actualprojectTitle.equals(WebdriverSingleton.dotEnvLoader()
+                .get("PROJECT_TITLE"));
 
     }
 
-    public void getGlassDucoments(){
+    public void getGlassDucoments() {
         glassDucomentation.click();
     }
 
@@ -60,16 +64,16 @@ public class Project extends BasePage {
 
     }
 
-    public void goToProjectSettings(){
+    public void goToProjectSettings() {
         projectSettings.click();
     }
 
-    public boolean validUserOnTheProjectSettingsPage(){
+    public boolean validUserOnTheProjectSettingsPage() {
 
         return projectSettingsTitle.isDisplayed();
     }
 
-    public void goToWorkFlow(){
+    public void goToWorkFlow() {
         workFlowLink.click();
     }
 }
