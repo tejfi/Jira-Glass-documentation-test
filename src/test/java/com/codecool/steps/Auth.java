@@ -24,7 +24,7 @@ public class Auth {
     @Then("ensure to provide a login form with the following fields USER and PASSWORD")
     public void ensureToProvideALoginFormWithTheFollowingFieldsUSERAndPASSWORD() {
         dotEnv = WebdriverSingleton.dotEnvLoader();
-        login.doLogin(System.getenv("JIRA_USERNAME"), System.getenv("JIRA_PASSWORD"));
+        login.doLogin(WebdriverSingleton.dotEnvLoader().get("JIRA_USERNAME"), WebdriverSingleton.dotEnvLoader().get("JIRA_PASSWORD"));
 
     }
 
