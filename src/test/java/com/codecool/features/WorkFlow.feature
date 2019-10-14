@@ -36,7 +36,6 @@ Feature: Workflow
     Then Your workflows have been published message shown.
 
 
-
   Scenario: Logout
     Then I log out
 

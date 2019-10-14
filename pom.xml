@@ -24,11 +24,12 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <!-- <testClassesDirectory>s360UIAutomationCC/src/main/java</testClassesDirectory> -->
-                    <testSourceDirectory>Jira-Glass-documentation-test/src/test/java/com/codecool/cucumberRunner/CucumberRunner.java</testSourceDirectory>
+                    <testSourceDirectory>
+                        Jira-Glass-documentation-test/src/test/java/com/codecool/cucumberRunner/CucumberRunner.java
+                    </testSourceDirectory>
                     <includes>
                         <include>**/*CucumberRunner.java</include>
                     </includes>
-                    <!-- <excludes> <exclude>**/*RunCukesTest.java</exclude> </excludes> -->
                 </configuration>
             </plugin>
         </plugins>
