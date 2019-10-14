@@ -54,7 +54,7 @@ public class Project extends BasePage {
         WebElement projectTitle = webDriverwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='aui-item project-title']/a[@title]")));
         String actualprojectTitle = projectTitle
                 .getText();
-        return actualprojectTitle.equals(WebdriverSingleton.dotEnvLoader().get("PROJECT_TITLE"));
+        return actualprojectTitle.equals(System.getenv("PROJECT_TITLE"));
 
     }
 

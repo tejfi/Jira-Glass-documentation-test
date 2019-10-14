@@ -80,7 +80,7 @@ public class Workflow extends BasePage {
         WebElement projectConfigHeading = webDriverwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='project-config-workflow-add-dropdown-trigger']")));
         String actualheadingText = projectConfigHeading.getText();
 
-        return actualheadingText.equals(WebdriverSingleton.dotEnvLoader().get("PROJECT_CONFIG_HEADING"));
+        return actualheadingText.equals(System.getenv("PROJECT_CONFIG_HEADING"));
     }
 
     public void clickaddWorkFlowButton() {
@@ -130,7 +130,7 @@ public class Workflow extends BasePage {
 
     public void addPasswordtoTheField() {
         administratorAccesField.clear();
-        administratorAccesField.sendKeys(WebdriverSingleton.dotEnvLoader().get("JIRA_PASSWORD"));
+        administratorAccesField.sendKeys(System.getenv("JIRA_PASSWORD"));
     }
 
     public void clickLoginFormSubmitButton() {
