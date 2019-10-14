@@ -72,8 +72,14 @@ public class Workflow extends BasePage {
     }
 
     public boolean checkUserOnTheWorkFlowConfigPage() {
-        String actualheadingText = findElement(driver,By.xpath("//div[@class='aui-page-header-main']/h2[@class='project-config-heading']"),10)
-                .getText();
+/*
+        String actualheadingText = projectConfigHeading.getText();
+
+*/
+        WebDriverWait webDriverwait = new WebDriverWait(driver, 10);
+        WebElement projectConfigHeading = webDriverwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='project-config-workflow-add-dropdown-trigger']")));
+        String actualheadingText = projectConfigHeading.getText();
+
         return actualheadingText.equals(WebdriverSingleton.dotEnvLoader().get("PROJECT_CONFIG_HEADING"));
     }
 

@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Project extends BasePage {
 
@@ -45,12 +47,14 @@ public class Project extends BasePage {
     }
 
     public boolean checkProjectIsShownOnTheLeftSide() {
-        String actualprojectTitle = findElement(driver, By.xpath("//div[@class='aui-item project-title']/a[@title]"), 10)
+/*
+        String actualprojectTitle = projectTitle.getText();
+*/
+        WebDriverWait webDriverwait = new WebDriverWait(driver, 10);
+        WebElement projectTitle = webDriverwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='aui-item project-title']/a[@title]")));
+        String actualprojectTitle = projectTitle
                 .getText();
-
-
-        return actualprojectTitle.equals(WebdriverSingleton.dotEnvLoader()
-                .get("PROJECT_TITLE"));
+        return actualprojectTitle.equals(WebdriverSingleton.dotEnvLoader().get("PROJECT_TITLE"));
 
     }
 
