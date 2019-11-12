@@ -20,7 +20,7 @@ public class WebdriverSingleton {
 
     public static WebDriver getDriver() throws MalformedURLException {
         if (driver == null) {
-            dotEnvLoader();
+    /*        dotEnvLoader();
             hubUrl = "https://" + System.getenv("SEHUB_USERNAME") + ":" + System.getenv("SEHUB_PW") + "@" + System.getenv("SEHUB_URL");
             DesiredCapabilities capability = DesiredCapabilities.chrome();
             ChromeOptions options = new ChromeOptions();
@@ -31,6 +31,11 @@ public class WebdriverSingleton {
             capability.setCapability("browserstack.debug", "true");
             System.out.println(hubUrl);
             driver = new RemoteWebDriver(new URL(hubUrl), capability);
+        }*/
+
+            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
         }
         return driver;
     }
