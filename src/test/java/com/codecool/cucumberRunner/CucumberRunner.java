@@ -5,10 +5,9 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = ".//src/test/java/com/codecool/features",
-        glue = {"com.codecool.steps"},
-        plugin = ("json:target/cucumber-reports/CucumberTestReport.json"),
-        monochrome= true,
-        dryRun= false)
+@CucumberOptions(glue = {"com.codecool.steps"},
+        features = {".//src/test/java/com/codecool/features"},
+        plugin = {"pretty", "html:target/cucumber", "json:target/cucumber-reports/cucumber.json"})
+
 public class CucumberRunner {
 }
