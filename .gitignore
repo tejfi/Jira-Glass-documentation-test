@@ -83,7 +83,6 @@ fabric.properties
 .idea/sonarlint
 
 .idea
-chromedriver
 *.iml
 target
 
