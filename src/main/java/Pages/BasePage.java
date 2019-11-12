@@ -13,17 +13,19 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 public abstract class BasePage {
-    protected WebDriver driver;
+    protected  WebDriver driver;
     protected String route;
     protected static final String BASE_URL = "https://jira2.codecool.codecanvas.hu";
+
+
+
+
 
     BasePage(String route, WebDriver driver) {
         this.route = WebdriverSingleton.dotEnvLoader().get("BASE_URL") + route;
         this.driver = driver;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
-
-
     public void goToPage() {
         driver.get(this.route);
     }

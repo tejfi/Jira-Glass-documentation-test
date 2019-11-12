@@ -13,13 +13,13 @@ import java.net.URL;
 import java.util.Map;
 
 public class WebdriverSingleton {
-    private static WebDriver driver;
+    private static WebDriver driver=null;
     private static Map<String, String> dotEnv;
     private static String hubUrl;
 
 
     public static WebDriver getDriver() throws MalformedURLException {
-        if (driver == null) {
+       /* if (driver == null) {
             dotEnvLoader();
             hubUrl = "https://" + WebdriverSingleton.dotEnvLoader().get("SEHUB_USERNAME") + ":" + WebdriverSingleton.dotEnvLoader().get("SEHUB_PW") + "@" + WebdriverSingleton.dotEnvLoader().get("SEHUB_URL");
             DesiredCapabilities capability = DesiredCapabilities.chrome();
@@ -30,8 +30,15 @@ public class WebdriverSingleton {
             capability.setPlatform(Platform.LINUX);
             capability.setCapability("browserstack.debug", "true");
             System.out.println(hubUrl);
-            driver = new RemoteWebDriver(new URL(hubUrl), capability);
+            driver = new web(new URL(hubUrl), capability);
         }
+        return driver;*/
+       if(driver==null){
+           System.setProperty("webdriver.chrome.driver","chromedriver");
+           driver= new ChromeDriver();
+           driver.manage().window().maximize();
+       }
+
         return driver;
     }
 
